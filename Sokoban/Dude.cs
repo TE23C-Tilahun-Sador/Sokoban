@@ -1,5 +1,6 @@
 
 
+using System.Drawing;
 using System.Numerics;
 
 namespace Sokoban;
@@ -16,48 +17,55 @@ public class Dude : Tile
     }  
     
     public Vector2 Movement;
+
+    
+    
+    
+    // Denna metod uppdaterar efter varje frame inom spelet
     public void update()
-    {
+    {   
+        
+
+
+        // Detta är variabler för att flytta spelaren inom spelet
         Movement.X = 0;
         Movement.Y = 0;
+        // Dessa if satser är för att att ändra på X- och Y-positionerna av spelarna
+         if (Raylib.IsKeyPressed(KeyboardKey.Left) )
+        {
+            // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
+            Movement.X-= size;
 
-         if (Raylib.IsKeyDown(KeyboardKey.Left))
+           
+
+
+        }
+    
+        else if (Raylib.IsKeyPressed(KeyboardKey.Right)  )
         {
             
-            Movement.X--;
+            Movement.X+= size;
 
-        }
-        else if (Raylib.IsKeyDown(KeyboardKey.Right))
-        {
             
-            Movement.X++;
 
         }
 
-         if (Raylib.IsKeyDown(KeyboardKey.Up))
+         if (Raylib.IsKeyPressed(KeyboardKey.Up))
         {
-            Movement.Y--;
+            Movement.Y-= size;
+           
+
         }
-        else if (Raylib.IsKeyDown(KeyboardKey.Down))
+        else if (Raylib.IsKeyPressed(KeyboardKey.Down)   )
         {
-            Movement.Y++;
+            Movement.Y+= size;
+        
     
         }
-        rect.X += Movement.X;
-        rect.Y += Movement.Y;
+        rect.X += Movement.X ;
+        rect.Y += Movement.Y ;
     }
 
-    public void moveright(int direction)
-    {
-       
-    }
-    public void moveup(int direction)
-    {
-        
-    }
-    public void movement()
-    {
-        
-    }
+   
 }
 

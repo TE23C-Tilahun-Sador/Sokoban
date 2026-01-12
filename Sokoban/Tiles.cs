@@ -8,7 +8,7 @@ public class Tile
     // public Vector2 Posistion;
 
     public Rectangle rect;
-    static int size = 100;
+    public int size = 100;
 
     
 

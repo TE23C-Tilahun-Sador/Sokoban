@@ -14,7 +14,10 @@ bkg.BkgGrid();
 Raylib.InitWindow(900, 700, "The title of my window");
 Raylib.SetTargetFPS(60);
 
+
+
 Dude player = new(1, 3);
+
 while (!Raylib.WindowShouldClose())
 {
 
