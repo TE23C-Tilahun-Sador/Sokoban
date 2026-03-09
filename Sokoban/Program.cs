@@ -4,7 +4,7 @@ using Sokoban;
 // Grid
 Background bkg = new();
 
-bkg.BkgGrid();
+
 
 
 
@@ -16,7 +16,7 @@ Raylib.SetTargetFPS(60);
 
 
 
-Dude player = new(1, 3);
+Dude player = new(1, 3, bkg);
 
 while (!Raylib.WindowShouldClose())
 {
@@ -30,12 +30,14 @@ while (!Raylib.WindowShouldClose())
 
   for (int i = 0; i < Tile.tiles.Count; i++)
   {
-    Raylib.DrawRectangleRec(Tile.tiles[i].rect, Color.Green);
+    Raylib.DrawRectangleRec(Tile.tiles[i].rect, Tile.tiles[i].color);
     Raylib.DrawRectangleLinesEx(Tile.tiles[i].rect, 1, Color.Black);
 
 
   }
   Raylib.DrawRectangleRec(player.rect, Color.Black);
+
+  
 
 
 

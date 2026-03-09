@@ -6,25 +6,17 @@ Låda
 Gubbe
 */
 
+using System.Security.Cryptography.X509Certificates;
 using Sokoban;
 
 public class Background
 {
+    // Detta är själva rutnätet som är i backgrunden
     public Tile[,] grid = new Tile[9, 7];
 
-    public void BkgGrid()
-    {
-        for (int x = 0; x < grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < grid.GetLength(1); y++)
-            {
-                new Floor(x, y);
+    // denna metod skriver ut själva rutnätet 
 
-            }
-        }
-
-    }
-
+    // Detta är en konstruktor för bakgrunden, alltså körs det vid en ny instans av en bakgrund.
     public Background()
     {
 
@@ -47,19 +39,31 @@ public class Background
                 // }
             }
         }
-    }
 
-    public void Draw()
-    {
         for (int y = 0; y < grid.GetLength(1); y++)
         {
             for (int x = 0; x < grid.GetLength(0); x++)
             {
-                Console.Write(grid[x, y]); // Ritar ut den nuvarande rutan
+                if (x == 0 || y == 0 || x == grid.GetLength(0) - 1)
+                {
+                    grid[x, y] = new Wall(x, y);
+                }
+
+                // if (x % 2 == 0 && y % 2 == 0)
+                // {
+                //     grid[x, y] = new Wall(x, y);
+                // }
             }
-            Console.WriteLine(); // Lägger till en radbrytning i slutet på varje utritad rad.
         }
+
+
+
+
+
+
     }
+
+
 
 
 
