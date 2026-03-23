@@ -28,6 +28,15 @@ while (!Raylib.WindowShouldClose())
 
   Raylib.ClearBackground(Color.White);
 
+  for (int x = 0; x < bkg.grid.GetLength(0); x++)
+  {
+    for (int y = 0; y < bkg.grid.GetLength(1); y++)
+    {
+      bkg.grid[x, y].Draw(x, y);
+    }
+  }
+
+
   for (int i = 0; i < Tile.tiles.Count; i++)
   {
     Raylib.DrawRectangleRec(Tile.tiles[i].rect, Tile.tiles[i].color);
@@ -37,7 +46,7 @@ while (!Raylib.WindowShouldClose())
   }
   Raylib.DrawRectangleRec(player.rect, Color.Black);
 
-  
+
 
 
 

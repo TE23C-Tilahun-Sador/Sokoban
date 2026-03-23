@@ -42,14 +42,24 @@ public class Dude : Tile
 
             // Detta är variabler för att flytta spelaren inom spelet
             Movement.X = 0;
-        Movement.Y = 0;
+            Movement.Y = 0;
         // Dessa if satser är för att att ändra på X- och Y-positionerna av spelarna
         if (Raylib.IsKeyPressed(KeyboardKey.Left))
         {
-            // Detta ser till att rutan där bredvid inte är en vägg
-            if (background.grid[gridX - 1, gridY] is Floor)
+            if (background.BoxGrid[gridX - 1, gridY] is Box && background.grid[gridX - 2, gridY] is Floor)
             {
-                
+                // flytta göbben
+                background.BoxGrid[gridX - 2, gridY] = background.BoxGrid[gridX - 1, gridY];
+                background.BoxGrid[gridX - 2, gridY].rect.X -= size;
+                background.BoxGrid[gridX - 1, gridY] = new Tile(0, 0);
+
+                  Movement.X -= size;
+            }
+
+            // Detta ser till att rutan där bredvid inte är en vägg
+            else if (background.grid[gridX - 1, gridY] is Floor && background.BoxGrid[gridX - 1, gridY] is not Box )
+            {
+
                 // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
 
                 Movement.X -= size;
@@ -57,48 +67,86 @@ public class Dude : Tile
 
         }
 
-        else if (Raylib.IsKeyPressed(KeyboardKey.Right) && gridX <= background.grid.GetLength(0))
+        else if (Raylib.IsKeyPressed(KeyboardKey.Right) )
         {
-            if (background.grid[gridX + 1, gridY] is Floor)
+            if (background.BoxGrid[gridX + 1, gridY] is Box && background.grid[gridX + 2, gridY] is Floor)
             {
-                // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
+                // flytta göbben
+                background.BoxGrid[gridX + 2, gridY] = background.BoxGrid[gridX + 1, gridY];
+                background.BoxGrid[gridX + 2, gridY].rect.X += size;
+                background.BoxGrid[gridX + 1, gridY] = new Tile(0, 0);
 
-            Movement.X += size;
-                
+                  Movement.X += size;
             }
 
+            // Detta ser till att rutan där bredvid inte är en vägg
+            else if (background.grid[gridX + 1, gridY] is Floor && background.BoxGrid[gridX + 1, gridY] is not Box )
+            {
+
+                // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
+
+                Movement.X += size;
+            }
+           
+
         }
-        else
-        {
-            Movement.X = 0;
-        }
+
 
         if (Raylib.IsKeyPressed(KeyboardKey.Up))
         {
-             if (background.grid[gridY - 1, gridX] is Floor)
+            if (background.BoxGrid[gridX, gridY - 1] is Box && background.grid[gridX, gridY - 2] is Floor)
             {
+                // flytta göbben
+                background.BoxGrid[gridX, gridY - 2] = background.BoxGrid[gridX, gridY - 1];
+                background.BoxGrid[gridX, gridY - 2].rect.Y -= size;
+                background.BoxGrid[gridX, gridY - 1] = new Tile(0, 0);
+
+                  Movement.Y -= size;
+            }
+
+            // Detta ser till att rutan där bredvid inte är en vägg
+            else if (background.grid[gridX, gridY - 1] is Floor && background.BoxGrid[gridX, gridY - 1] is not Box )
+            {
+
                 // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
 
-            
-            Movement.Y -= size;
-                
+                Movement.Y -= size;
             }
+            // if (background.grid[gridX, gridY - 1] is Floor)
+            // {
+
+
+
+            //     Movement.Y -= size;
+
+            // }
+
 
 
 
         }
         else if (Raylib.IsKeyPressed(KeyboardKey.Down))
         {
-             if (background.grid[gridX, gridY + 1] is Floor)
+             if (background.BoxGrid[gridX, gridY + 1] is Box && background.grid[gridX, gridY + 2] is Floor)
             {
-                // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
+                // flytta göbben
+                background.BoxGrid[gridX, gridY + 2] = background.BoxGrid[gridX, gridY + 1];
+                background.BoxGrid[gridX, gridY + 2].rect.Y += size;
+                background.BoxGrid[gridX, gridY + 1] = new Tile(0, 0);
 
-            
-            Movement.Y += size;
-                
+                  Movement.Y += size;
             }
 
-            
+            // Detta ser till att rutan där bredvid inte är en vägg
+            else if (background.grid[gridX, gridY + 1] is Floor && background.BoxGrid[gridX, gridY + 1] is not Box )
+            {
+
+                // spelaren flyttas med en ruta per klick istället för att kontenuerligt flyttas åt en riktning
+
+                Movement.Y += size;
+            }
+
+
 
 
         }
