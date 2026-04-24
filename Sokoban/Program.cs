@@ -1,8 +1,6 @@
-﻿global using Raylib_cs;
+global using Raylib_cs;
 using Sokoban;
 
-// Grid
-Background bkg = new();
 
 
 
