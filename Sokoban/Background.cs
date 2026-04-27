@@ -1,13 +1,3 @@
-/*
-Vägg
-Golv
-Golv med vinstplats
-Låda
-Gubbe
-*/
-
-using System.Security.Cryptography.X509Certificates;
-using Sokoban;
 
 public class Background
 {

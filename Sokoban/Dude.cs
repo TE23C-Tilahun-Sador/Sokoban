@@ -1,14 +1,4 @@
 
-
-using System.Drawing;
-using System.Numerics;
-
-namespace Sokoban;
-// arv till tiles
-// skapa movement metod
-// skapa moveleft/right/up/down
-// skapa collisionrec bool
-// se till att man inte kan go in i andra tiles
 public class Dude : Tile
 {
 
@@ -29,16 +19,6 @@ public class Dude : Tile
         int gridX = (int)(rect.X / size);
         int gridY = (int)(rect.Y / size);
 
-
-        if (gridX <= background.grid.GetLength(0))
-
-            // if (background.grid[gridX, gridY] is Floor)
-            // {
-
-            // }
-
-
-            // System.Console.WriteLine(gridX);
 
             // Detta är variabler för att flytta spelaren inom spelet
             Movement.X = 0;
@@ -145,8 +125,6 @@ public class Dude : Tile
 
                 Movement.Y += size;
             }
-
-
 
 
         }
