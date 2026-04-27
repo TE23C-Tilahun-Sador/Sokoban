@@ -9,7 +9,7 @@ public class Tile
 
     public Rectangle rect;
     // Detta är storleken på en ruta
-    public int size = 100;
+    static public int size;
 
     public Color color = Color.Blank;
 
@@ -18,6 +18,7 @@ public class Tile
     // även ger rutan sin storlek och sin position inom rutnätet
     public Tile(int x, int y)
     {
+        
         tiles.Add(this);
         rect = new(x * size, y * size, size, size);
     }

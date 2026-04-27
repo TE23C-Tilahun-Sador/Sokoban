@@ -1,22 +1,19 @@
-global using Raylib_cs;
+﻿global using Raylib_cs;
 using Sokoban;
 
 
-
-
-
-
-
-
-
-Raylib.InitWindow(900, 700, "The title of my window");
+Raylib.InitWindow(800, 600, "The title of my window");
+// Detta görs så att rutnätet alltid kommer att passa in i spelfönstret
+Background bkg = new();
+// Själva Gridet
 Raylib.SetTargetFPS(60);
+// Detta håller max FPS på 60
 
 
 
 Dude player = new(1, 3, bkg);
 
-while (!Raylib.WindowShouldClose())
+while (!Raylib.WindowShouldClose() && !bkg.HasWon() == true)
 {
 
   player.update();
@@ -24,7 +21,7 @@ while (!Raylib.WindowShouldClose())
   Raylib.BeginDrawing();
 
 
-  Raylib.ClearBackground(Color.White);
+  Raylib.ClearBackground(Color.Black);
 
   for (int x = 0; x < bkg.grid.GetLength(0); x++)
   {

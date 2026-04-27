@@ -1,10 +1,10 @@
 
 
-public class Floor_with_Win : Tile
+public class FloorWithWin : Tile
 {
-    public Floor_with_Win(int x, int y) : base(x, y)
+    public FloorWithWin(int x, int y) : base(x, y)
     {
-
+        color = Color.DarkGreen;
     }
 
     
